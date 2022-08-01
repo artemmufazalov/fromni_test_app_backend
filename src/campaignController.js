@@ -49,7 +49,7 @@ class CampaignController {
 				}
 				return res.status(200).json({
 					message: 'Success',
-					campaign: item,
+					item: item,
 				});
 			});
 		} catch (err) {
@@ -80,7 +80,7 @@ class CampaignController {
 					campaignModel.findOne({ _id: id }, (_, item) => {
 						return res.status(200).json({
 							message: 'Updated',
-							campaign: item,
+							item: item,
 						});
 					});
 				}
