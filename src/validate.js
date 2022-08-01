@@ -25,6 +25,10 @@ const validateForms = (forms) => {
 			);
 		}
 
+		if (!chMeta.buttons) {
+			return;
+		}
+
 		const qInline = chData.buttons.filter(
 				(bt) => bt.type === 'inline'
 			).length,
@@ -47,7 +51,9 @@ const validateForms = (forms) => {
 		}
 
 		if (
-			(!chMeta.buttons.inline.isLinkAllowed && qInlineLinks > 0) ||
+			(chMeta.buttons &&
+				!chMeta.buttons.inline.isLinkAllowed &&
+				qInlineLinks > 0) ||
 			(chMeta.buttons.inline.maxWithLink &&
 				qInlineLinks > chMeta.buttons.inline.maxWithLink)
 		) {
@@ -55,7 +61,9 @@ const validateForms = (forms) => {
 		}
 
 		if (
-			(!chMeta.buttons.standart.isLinkAllowed && qStandartLinks > 0) ||
+			(chMeta.buttons &&
+				!chMeta.buttons.standart.isLinkAllowed &&
+				qStandartLinks > 0) ||
 			(chMeta.buttons.standart.maxWithLink &&
 				qStandartLinks > chMeta.buttons.inline.maxWithLink)
 		) {
